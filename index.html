@@ -112,7 +112,21 @@
             Saltar();
         }
     }
+
+    function startup() {
+  var el = document.getElementsByTagName("canvas")[0];
+  el.addEventListener("touchstart", handleStart, true);
+  el.addEventListener("touchend", handleEnd, true);
+  el.addEventListener("touchcancel", handleCancel, true);
+  el.addEventListener("touchleave", handleLeave, true);
+  el.addEventListener("touchmove", handleMove, true);
+}
     
+    function HandleKeyDown(ev){
+        if(ev.keyCode == 32){
+            Saltar();
+        }
+    }
     function Saltar(){
         if(dinoPosY === sueloY){
             saltando = true;
@@ -220,14 +234,14 @@
     function GanarPuntos() {
         puntaje++;
         textoScore.innerText = puntaje;
-        if(puntaje == 5){
+        if(puntaje == 10){
             gameVel = 1.5;
             contenedor.classList.add("mediodia");
-        }else if(puntaje == 10) {
+        }else if(puntaje == 30) {
             gameVel = 2;
             contenedor.classList.add("tarde");
-        } else if(puntaje == 20) {
-            gameVel = 3;
+        } else if(puntaje == 70) {
+            gameVel = 3.5;
             contenedor.classList.add("noche");
         }
         suelo.style.animationDuration = (3/gameVel)+"s";
@@ -352,7 +366,7 @@
     right: 15px;
     z-index: 10;
 
-    color: #d48871;
+    color: #ffffff;
     font-family: Verdana;
     font-size: 30px;
     font-weight: bold;
@@ -367,7 +381,7 @@
 
 
     text-align: center;
-    color: #7e928b;
+    color: #53977f;
     font-size: 30px;
     font-family: Verdana;
     font-weight: 700;
